@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row"> 
+            <div class="col-12">
+                <div class="konten">
+                    <div class="card">
+                    <h5 class="card-title cs-hs" id="hasil">0</h5>
+                    <h5 class="card-title cs-hs" id="operator">0</h5>
+                    <div class="card-body">
+                            <div class="row">
+                                    <div class="col btnwarna">
+                                        7
+                                    </div>
+                                    <div class="col btnwarna">
+                                        8   
+                                    </div>
+                                    <div class="col btnwarna">
+                                        9  
+                                    </div>
+                                    <div class="col btnwarna">
+                                        *
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col btnwarna">
+                                        4
+                                    </div>
+                                    <div class="col btnwarna">
+                                        5   
+                                    </div>
+                                    <div class="col btnwarna">
+                                        6  
+                                    </div>
+                                    <div class="col btnwarna">
+                                        -
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col btnwarna">
+                                        1
+                                    </div>
+                                    <div class="col btnwarna">
+                                        2   
+                                    </div>
+                                    <div class="col btnwarna">
+                                        3  
+                                    </div>
+                                    <div class="col btnwarna" >
+                                        +
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col btnwarna">
+                                        .
+                                    </div>
+                                    <div class="col btnwarna">
+                                        0   
+                                    </div>
+                                    <div class="col btnwarna">
+                                          hapus
+                                    </div>
+                                    <div class="col btnwarna">
+                                        =
+                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col btnwarna">
+                                    clear
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var ass  = document.getElementsByClassName("btnwarna");
+    var operator  = document.getElementById("operator");
+    var hasil  = document.getElementById("hasil");
+    function jumlah(){
+        var angka = operator.innerText
+        var op;
+        var a;
+        for(var i=0;i<angka.length;i++){
+            if(isNaN(parseInt(angka[i]))){
+                op = angka[i]
+            }
+        }
+        angka1 = angka.split(op)[0];
+        angka2 = angka.split(op)[1];
+        gethasil = angka1 + op + angka2
+        if( isNaN(parseInt(gethasil[gethasil.length -1]))){
+            return
+        }
+        hasil.innerText = eval(gethasil)
+    }
+    function hapus(){
+        if(operator.innerText.length <1)
+        {
+            return
+        }
+        if(operator.innerText.length<2)
+        {
+            operator.innerHTML = 0
+            return
+        }
+        operator.innerText= operator.innerText.substring(0,operator.innerText.length -1)
+    }
+    for(var i=0;i<ass.length;i++){
+        ass[i].addEventListener("click",function(){
+                if(this.innerText=='='){ 
+                    jumlah()  
+                    return
+                }else if(this.innerText =='clear'){
+                    hasil.innerHTML =0;
+                    operator.innerHTML = 0;
+                    return
+                }
+                else if(this.innerText =='hapus'){
+                    hapus()
+                    return
+                }
+                else if(operator.innerText=='0'){
+                    operator.innerText = this.innerText
+                    return
+                }
+                
+                operator.innerText += this.innerText
+                jumlah()
+            })
+        }
+    
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

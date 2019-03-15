@@ -1,0 +1,30 @@
+body{
+    text-align: center;
+}
+.container{
+    margin: 0px auto;
+}
+.cal{
+    margin-top: 100px;
+}
+.konten{
+    height: 400px;
+    width: 400px;
+    margin: 0px auto;
+}
+.btnwarna{
+    background-color: dodgerblue;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+.btnwarna:hover{
+    background-color: rgb(100, 177, 255);
+    color: white;
+    display: inline;
+    text-decoration: none;
+}
+.cs-hs{
+    text-align: right;
+    font-size: 25px;
+}
