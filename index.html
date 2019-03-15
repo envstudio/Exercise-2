@@ -15,7 +15,7 @@
             <div class="col-12">
                 <div class="konten">
                     <div class="card">
-                    <h5 class="card-title cs-hs" id="hasil">0</h5>
+                    <h5 class="card-title cs-hs" id="hasil" style="color:gray">0</h5>
                     <h5 class="card-title cs-hs" id="operator">0</h5>
                     <div class="card-body">
                             <div class="row">
@@ -91,42 +91,35 @@
     var getangka  = document.getElementsByClassName("btnwarna");
     var operator  = document.getElementById("operator");
     var hasil  = document.getElementById("hasil");
+    var allop = ['+','-','/','*'];
     function jumlah(){
+        hasil.style.color = "grey"
         var angka = operator.innerText
-        var op;
-        var a;
-        for(var i=0;i<angka.length;i++){
-            if(isNaN(parseInt(angka[i]))){
-                op = angka[i]
-            }
+        var op = allop.includes(angka);
+        if (!op) {
+            hasil.innerText = eval(angka)
         }
-        angka1 = angka.split(op)[0];
-        angka2 = angka.split(op)[1];
-        gethasil = angka1 + op + angka2
-        if( isNaN(parseInt(gethasil[gethasil.length -1]))){
-            return
-        }
-        hasil.innerText = eval(gethasil)
     }
     function hapus(){
-        if(operator.innerText.length <1)
+        hasil.style.color = "grey"
+        if(operator.innerText.length < 2)
         {
-            return
-        }
-        if(operator.innerText.length<2)
-        {
-            operator.innerHTML = 0
-            return
+            operator.innerHTML = 0;
+            hasil.innerHTML = 0;
+            return;
         }
         operator.innerText= operator.innerText.substring(0,operator.innerText.length -1)
+        jumlah()
          
     }
     for(var i=0;i<getangka.length;i++){
         getangka[i].addEventListener("click",function(){
                 if(this.innerText=='='){ 
                     jumlah()  
+                    hasil.style.color = "black"
                     return
                 }else if(this.innerText =='clear'){
+                    hasil.style.color = "grey"
                     hasil.innerHTML =0;
                     operator.innerHTML = 0;
                     return
