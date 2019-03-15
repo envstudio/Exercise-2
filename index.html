@@ -88,7 +88,7 @@
     </div>
 </body>
 <script>
-    var ass  = document.getElementsByClassName("btnwarna");
+    var getangka  = document.getElementsByClassName("btnwarna");
     var operator  = document.getElementById("operator");
     var hasil  = document.getElementById("hasil");
     function jumlah(){
@@ -119,9 +119,10 @@
             return
         }
         operator.innerText= operator.innerText.substring(0,operator.innerText.length -1)
+         
     }
-    for(var i=0;i<ass.length;i++){
-        ass[i].addEventListener("click",function(){
+    for(var i=0;i<getangka.length;i++){
+        getangka[i].addEventListener("click",function(){
                 if(this.innerText=='='){ 
                     jumlah()  
                     return
@@ -132,6 +133,7 @@
                 }
                 else if(this.innerText =='hapus'){
                     hapus()
+                    jumlah();  
                     return
                 }
                 else if(operator.innerText=='0'){
